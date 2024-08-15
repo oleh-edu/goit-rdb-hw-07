@@ -1,0 +1,46 @@
+1. SQL query to extract the year, month and day from the date attribute in the orders table.
+
+SELECT 
+    id,
+    date,
+    YEAR(date) AS year,
+    MONTH(date) AS month,
+    DAY(date) AS day
+FROM 
+    orders;
+
+2.SQL query to add one day to the date attribute in the orders table.
+
+SELECT 
+    id,
+    date,
+    DATE_ADD(date, INTERVAL 1 DAY) AS date_plus_one_day
+FROM 
+    orders;
+
+3.SQL query to display the number of seconds from the start of the countdown (timestamp) for the date attribute in the orders table.
+
+SELECT 
+    id,
+    date,
+    UNIX_TIMESTAMP(date) AS timestamp
+FROM 
+    orders;
+
+4. SQL query to count the number of rows in the orders table, where the date attribute is between 1996-07-10 00:00:00 and 1996-10-08 00:00:00.
+
+SELECT 
+    COUNT(*) AS total_rows
+FROM 
+    orders
+WHERE 
+    date BETWEEN '1996-07-10 00:00:00' AND '1996-10-08 00:00:00';
+
+5. SQL query for displaying the id attribute, date attribute and JSON object in the orders table.
+
+SELECT 
+    id,
+    date,
+    JSON_OBJECT('id', id, 'date', date) AS order_json
+FROM 
+    orders;
